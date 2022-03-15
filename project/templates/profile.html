@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+          <div class="d-flex justify-content-between align-items-center">
+              <h2>Signup</h2>
+          </div>
+
+      </div>
+  </section><!-- End Breadcrumbs -->
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="alert alert-warning" role="alert">
+      {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+  </div>
+  {% endif %}
+  {% endwith %}
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+      <div class="container">
+          <div class="row">
+<h1>Bienvenido {{name}}</h1>
+      </div>
+  </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+{% endblock %}

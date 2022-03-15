@@ -1,0 +1,45 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Productos</h2>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-warning" role="alert">
+        {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {%for producto in productos%}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../static/img/productos/{{producto.image_name}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{producto.nombre}}</h5>
+                            <p class="card-text">{{producto.precio}}</p>
+                        </div>
+                        <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+{% endblock %}
