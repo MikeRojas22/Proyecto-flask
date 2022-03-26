@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 #Importamos los módulos de seguridad para las funciones hash
 from werkzeug.security import generate_password_hash, check_password_hash
 
+import logging
+import datetime
 #Importamos el método login_required de flask_security
 from flask_security import login_required
 #Importamos los métodos login_user, logout_user flask_security.utils
@@ -35,11 +37,13 @@ def login_post():
     if not user or not check_password_hash(user.password, password):
     #if not user or not user.password==encrypt_password(password):
         #Si el usuario no existe o no coinciden los passwords
+        logging.warning('El usuario {} inició sesión de manera erronea, Fecha: {}'.format(email,datetime.datetime.today()))
         flash('El usuario y/o la contraseña son incorrectos')
         return redirect(url_for('auth.login')) #Si el usuario no existe o el password es incorrecto regresamos a login
     
     #Si llegamos a este punto sabemos que el usuario tiene datos correctos.
     #Creamos una sessión y logueamos al usuario
+    logging.debug('El usuario {} inició sesión, Fecha: {}'.format(email,datetime.datetime.today()))
     login_user(user, remember=remember)
     return redirect(url_for('main.profile'))
 
@@ -59,6 +63,7 @@ def register_post():
 
     if user: #Si se encontró un usuario, redireccionamos de regreso a la página de registro
         flash('El correo electrónico ya existe')
+        logging.warning('Registro de usuario erroneo con correo existente: {}, Fecha: {}'.format(email,datetime.datetime.today()))
         return redirect(url_for('auth.register'))
 
     #Creamos un nuevo usuario con los datos del formulario.
@@ -73,6 +78,7 @@ def register_post():
     
     #Añadimos el nuevo usuario a la base de datos.
     #db.session.add(new_user)
+    logging.debug('Se registro nuevo usuario: {}, Fecha: {}'.format(email,datetime.datetime.today()))
     db.session.commit()
 
     return redirect(url_for('auth.login'))

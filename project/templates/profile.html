@@ -25,7 +25,13 @@
   <section id="contact" class="contact">
       <div class="container">
           <div class="row">
-<h1>Bienvenido {{name}}</h1>
+            Welcome {{ current_user.email }}!<br />
+            If you're seeing this page, you must be logged in.<br />
+            <br />
+            {% if current_user.is_authenticated and current_user.has_role('admin')%}
+           <p> If you're an administrator, you can click <a href="admin">here</a> to administer Users and Roles.</p><br />
+            {% endif %}
+            <br />
       </div>
   </section><!-- End Contact Section -->
 

@@ -29,14 +29,14 @@ def galeria():
 
 @productos.route('/listaProductos')
 @login_required
-@roles_required('Admin')
+@roles_required('admin')
 def listaProductos():
     productos = Productos.query.all()
     return render_template('/productos/listaProductos.html', productos=productos)
 
 @productos.route('/addProducto')
 @login_required
-@roles_required('Admin')
+@roles_required('admin')
 def addProducto():
     return render_template('/productos/addProductos.html')
 
@@ -45,7 +45,7 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 @productos.route('/addProducto', methods=['POST'])
 @login_required
-@roles_required('Admin')
+@roles_required('admin')
 def addProducto_post():
     nombre = request.form.get('nombre')
     precio = request.form.get('precio')
@@ -74,7 +74,7 @@ def addProducto_post():
 
 @productos.route('/updateProducto/<id>', methods=['POST','GET'])
 @login_required
-@roles_required('Admin')
+@roles_required('admin')
 def updateProducto(id):
     producto = Productos.query.get(id)
     if request.method == 'POST':
@@ -105,7 +105,7 @@ def updateProducto(id):
 
 @productos.route('/deleteProducto/<id>')
 @login_required
-@roles_required('Admin')
+@roles_required('admin')
 def deleteProducto(id):
     producto = Productos.query.get(id)
     db.session.delete(producto)
