@@ -85,5 +85,8 @@ def create_app():
     from .productos import productos as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    #Registramos el blueprint para los pedidos de la aplicación
+    from .pedidos import pedidos as main_blueprint
+    app.register_blueprint(main_blueprint)
 
     return app

@@ -1,0 +1,53 @@
+{% extends "layout3.html" %}
+
+{% block content %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Pedido</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Producto</li>
+            <li>Pedido</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+          <div class="row">
+              <div class="col">
+                    <div class="thumb-image detail_images">
+                       <img src="../../static/img/productos/{{producto.image_name}}" data-imagezoom="true" width="300px" height="300px" alt="">
+                    </div>
+              </div>
+              <div class="col">
+                <h3>{{producto.nombre}}</h3>
+                <div class="single-price">
+                  <ul>
+                    <li>Paquete de 10 galletas - $70</li>
+                    <li><input id="cantidad" type="number"></li>
+                  </ul>
+                </div>
+                <p class="single-price-text">Fusce a egestas nibh, eget ornare erat. Proin placerat, urna et consequat efficitur, sem odio blandit enim, sit amet euismod turpis est mattis lectus. Vestibulum maximus quam et quam egestas imperdiet. In dignissim auctor viverra. </p>
+                <form action="#" method="post">
+                  <input type="hidden" name="cmd" value="_cart" />
+                  <input type="hidden" name="add" value="1" />
+                  <input type="hidden" name="w3ls_item" value="Snow Blower" />
+                  <input type="hidden" name="amount" value="540.00" />
+                  <button type="submit" class="w3ls-cart" ><i class="fa fa-cart-plus" aria-hidden="true"></i>Hacer Pedido</button>
+                </form>
+              </div>
+          </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+{% endblock %}

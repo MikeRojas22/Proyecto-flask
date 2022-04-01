@@ -100,7 +100,7 @@ def updateProducto(id):
             producto.image_name = file_name
             db.session.commit()
             return redirect(url_for('productos.listaProductos'))
-    
+
     return render_template('/productos/updateProductos.html', producto=producto)
 
 @productos.route('/deleteProducto/<id>')

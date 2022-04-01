@@ -31,9 +31,9 @@
                         <img src="../static/img/productos/{{producto.image_name}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{producto.nombre}}</h5>
-                            <p class="card-text">{{producto.precio}}</p>
+                            <p class="card-text">Paquete de 10 piezas - Precio: ${{producto.precio}}</p>
                         </div>
-                        <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
+                        <a href="{{ url_for('pedidos.pedido', id=producto.idProducto) }}" class="btn btn-primary stretched-link">Hacer Pedido</a>
                     </div>
                 </div>
                 {%endfor%}
