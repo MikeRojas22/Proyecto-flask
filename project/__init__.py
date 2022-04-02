@@ -7,6 +7,8 @@ from flask_admin import Admin
 from flask_admin.contrib  import sqla
 import os
 
+## Comentario de Daniel
+
 from wtforms.fields import PasswordField
 
 import logging
